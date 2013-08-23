@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.sunlightlabs.android.congress.NotificationSettings;
 import com.sunlightlabs.android.congress.NotificationTabs;
 import com.sunlightlabs.android.congress.R;
@@ -47,7 +47,7 @@ public class Footer {
 	private Subscription subscription;
 	private List<String> latestIds;
 	
-	GoogleAnalyticsTracker tracker;
+	EasyTracker tracker;
 	
 	// initialize the footer to a fragment, obtain a tracker from its activity's fragment pool
 	// set it up with a subscription and a list of seen items

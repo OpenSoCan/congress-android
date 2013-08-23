@@ -29,8 +29,6 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu_main);
 
-		Analytics.track(this, "/");
-		
 		setupControls();
 		setupFragments();
 		
@@ -43,7 +41,7 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 			showChangelog();
 		}
 	}
-
+	
 	public void setupControls() {
 		setupDebugBar();
 		
@@ -156,7 +154,7 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 	}
 	
 	public void goReview() {
-		Analytics.page(this, "/review", false);
+//		Analytics.page(this, "/review", false);
 		String packageName = getResources().getString(R.string.app_package_name);
 		String channel = getResources().getString(R.string.market_channel); 
 		try {
@@ -173,7 +171,7 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 	}
 	
 	public void showAbout() {
-		Analytics.page(this, "/about", false);
+//		Analytics.page(this, "/about", false);
 		FragmentUtils.alertDialog(this, AlertFragment.ABOUT);
 	}
 	
@@ -201,7 +199,7 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 			break;
 		case R.id.changelog:
 			// here so that we don't record hits when people automatically view the changelog on update
-			Analytics.page(this, "/changelog", false);
+//			Analytics.page(this, "/changelog", false);
 			showChangelog();
 			break;
 		}
@@ -265,5 +263,17 @@ public class MenuMain extends FragmentActivity implements ActionBarUtils.HasActi
 			return item;
 		}
 		
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		Analytics.start(this);
+	}
+	
+	@Override
+	public void onStop() {
+		super.onStop();
+		Analytics.stop(this);
 	}
 }
